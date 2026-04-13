@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TNS Wellness Finder</title>
+<link rel="icon" href="The_New_School_logo.png" type="image/x-icon">
+
+<style>
+body {
+  font-family: monospace;
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.screen { display: none; }
+.screen.active { display: block; }
+
+.hidden { display: none; }
+
+button {
+  padding: 10px 14px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.option {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.option.selected {
+  background: black;
+  color: white;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.img {
+  max-width: 100%;
+  height: 2cm;
+  width: 2cm;
+}
+
+</style>
+</head>
+<body>
+
+<div class="screen active" id="s-intro">
+  <h1>TNS Wellness Finder</h1>
+  <p>Answer a few questions to find support.</p>
+
+  <button id="startBtn">Start</button>
+
+  <div id="history-container" class="hidden">
+    <p id="history-display"></p>
+    <button id="clearHistoryBtn">Clear History</button>
+  </div>
+</div>
+
+
+<div class="screen" id="s-quiz">
+
+  <div id="q-num"></div>
+  <h2 id="q-text"></h2>
+
+  <div id="q-multi" class="hidden">
+    Select all that apply
+  </div>
+
+  <div id="q-options"></div>
+
+  <div>
+    <button id="btn-back">Back</button>
+    <button id="btn-next" disabled>Next</button>
+  </div>
+
+</div>
+
+
+<div class="screen" id="s-results">
+  <h1>Your Results</h1>
+  <div id="results"></div>
+  <div id="feedback-section" style="margin-top: 40px; border-top: 2px solid #000; padding-top: 20px;">
+  <h2>Resource Feedback</h2>
+  <p>Did any of these resources help you? Let us know.</p>
+
+  <div>
+    <label for="feedback-resource"><strong>Which resource?</strong></label><br>
+    <select id="feedback-resource" style="width:100%; padding:8px; margin-top:6px; font-family:monospace;">
+      <option value="">— Select a resource —</option>
+    </select>
+  </div>
+
+  <div style="margin-top:16px;">
+    <label><strong>Was it helpful?</strong></label><br>
+    <button class="feedback-rating" data-val="yes" style="margin-right:8px;">👍 Yes</button>
+    <button class="feedback-rating" data-val="no">👎 No</button>
+  </div>
+
+  <div style="margin-top:16px;">
+    <label for="feedback-comment"><strong>Any comments? (optional)</strong></label><br>
+    <textarea id="feedback-comment" rows="3"
+      style="width:100%; margin-top:6px; font-family:monospace; padding:8px; box-sizing:border-box;"
+      placeholder="What worked or didn't work for you?"></textarea>
+  </div>
+
+  <button id="submit-feedback" style="margin-top:10px;">Submit Feedback</button>
+  <div id="feedback-thanks" class="hidden" style="margin-top:10px; font-weight:bold;">
+    ✓ Thanks for your feedback!
+  </div>
+
+  <div id="feedback-history-section" class="hidden" style="margin-top:30px;">
+    <h3>Previous Feedback</h3>
+    <div id="feedback-history-list"></div>
+    <button id="clear-feedback-btn" style="margin-top:10px;">Clear All Feedback</button>
+  </div>
+</div>
+
+  <button id="restartBtn">Start Over</button>
+</div>
+<script src="app.js"></script>
+
+</body>
+</html>
